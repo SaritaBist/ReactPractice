@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import SingleNote from "./SingleNote";
 
 function Notes() {
 
@@ -6,8 +7,9 @@ function Notes() {
     let [text,setText]=useState(' ')
    function updateText(event)
     {
-       setText(event.target.value);
-    }
+       setText(event.target.value); 
+    //    text=event.target.value;
+    }                                    
     function addNotes(event)
     {
         let newArray=[...notes,text]
@@ -15,15 +17,15 @@ function Notes() {
     }
 
   return (
-    <div>
+    <>
       <input type="text" onChange={updateText}></input>
       <button onClick={addNotes}>Submit</button>
       <ul>
         {
-            notes.map((note)=><li>{note}</li>)
+            notes.map((note)=><li><SingleNote note={note}/></li>)
         }
       </ul>
-    </div>
+    </>
   );
 }
 
